@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>Lumen — Assistive Communication Software</title>
+    <meta name="description" content="Lumen is assistive communication software. Choose words and build messages with one gesture read by your camera, then hear them spoken. Try it in your browser or on Windows.">
+    <meta name="theme-color" content="#f7f7fc">
+ 
+    <!-- Social preview. Most platforms need an absolute URL for og:image:
+         once the site address is known, change the path below to the full URL. -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Lumen">
+    <meta property="og:title" content="Lumen — Assistive Communication">
+    <meta property="og:description" content="Choose words and build messages with one gesture read by your camera, then hear them spoken. In your browser or on Windows.">
+    <meta property="og:image" content="IMAGES/og-image.png">
+    <meta property="og:image:alt" content="The Lumen logo with the words Assistive communication">
+    <meta name="twitter:card" content="summary_large_image">
+ 
+    <link rel="icon" type="image/png" href="IMAGES/Lumenfavicon.png">
+ 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="site.css">
+ 
+    <script>document.documentElement.classList.add("js");</script>
+    <script src="site.js" defer></script>
+</head>
+<body>
+ 
+    <a class="skip-link" href="#main">Skip to main content</a>
+ 
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand-link" href="#top" aria-label="Lumen, back to top">
+                <img src="IMAGES/Lumenlogo.png" alt="Lumen" width="582" height="164">
+            </a>
+ 
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+ 
+            <nav class="site-nav" id="site-nav" aria-label="Main">
+                <ul>
+                    <li><a href="#how-it-works">How it works</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="https://philipe-pajishvili.github.io/Lumen-2.0/">Try Lumen</a></li>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+ 
+    <main id="main" tabindex="-1">
+ 
+        <!-- =====================================================
+             HERO
+        ===================================================== -->
+        <section class="hero" id="top" aria-labelledby="hero-title">
+            <div class="container hero-grid">
+ 
+                <div class="hero-copy">
+                    <h1 id="hero-title">Pick a word with a gesture. Lumen says it aloud.</h1>
+ 
+                    <p class="lead">
+                        Lumen is assistive communication software. It watches for one gesture through your camera,
+                        steps through a board of words and letters, and speaks whatever you select.
+                    </p>
+ 
+                    <div class="button-row">
+                        <a class="btn btn-primary" href="https://philipe-pajishvili.github.io/Lumen-2.0/">Try Lumen</a>
+                        <a class="btn btn-secondary" href="#download" data-link="windowsDownload">Download for Windows</a>
+                    </div>
+ 
+                    <p class="small-note">Works in the browser with a webcam, or as a Windows desktop app.</p>
+                </div>
+ 
+                <!-- Simplified drawing of the real board. The words and their order come from the app. -->
+                <figure class="demo" data-demo style="margin-block: 0;">
+                    <div class="demo-frame" aria-hidden="true">
+                        <div class="demo-screen" data-demo-screen>Input Detected</div>
+ 
+                        <div class="demo-grid">
+                            <div class="demo-cell" data-demo-cell>Hello</div>
+                            <div class="demo-cell" data-demo-cell>Bye</div>
+                            <div class="demo-cell" data-demo-cell>Please</div>
+                            <div class="demo-cell" data-demo-cell>Thank You</div>
+                            <div class="demo-cell is-selected" data-demo-cell>Drink</div>
+                            <div class="demo-cell" data-demo-cell>Eat</div>
+                            <div class="demo-cell" data-demo-cell>Help</div>
+                            <div class="demo-cell" data-demo-cell>Yes</div>
+                            <div class="demo-cell" data-demo-cell>No</div>
+                        </div>
+ 
+                        <div class="demo-spoken" data-demo-caption data-visible="true">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+                            <span>Spoken: “Drink”</span>
+                        </div>
+                    </div>
+ 
+                    <div class="demo-controls">
+                        <button class="demo-toggle" type="button" data-demo-toggle hidden>Pause animation</button>
+                    </div>
+ 
+                    <figcaption class="small-note" style="margin-top: 0.75rem;">
+                        Illustration of the Lumen board. A highlight steps from button to button. When the gesture is
+                        detected, the highlighted button is selected and spoken. Shown faster than the real app.
+                    </figcaption>
+                </figure>
+ 
+            </div>
+        </section>
+ 
+        <!-- =====================================================
+             THE PROBLEM
+        ===================================================== -->
+        <section class="section band-white" id="problem" aria-labelledby="problem-title">
+            <div class="container split">
+                <h2 id="problem-title">Communication shouldn’t depend on one way of interacting.</h2>
+ 
+                <div class="problem-copy">
+                    <p>
+                        Most communication tools assume you can type, tap a screen, or speak on demand.
+                        People move and interact in many different ways, and software should work with that range
+                        instead of asking everyone to fit one mold.
+                    </p>
+                    <p>
+                        Lumen is one more pathway. A single, repeatable gesture is enough to choose a phrase,
+                        spell out a message and have it spoken aloud.
+                    </p>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- =====================================================
+             HOW IT WORKS
+        ===================================================== -->
+        <section class="section" id="how-it-works" aria-labelledby="how-title">
+            <div class="container">
+ 
+                <div class="section-head">
+                    <h2 id="how-title">How Lumen works</h2>
+                    <p class="lead">One gesture, repeated. Lumen does the scanning.</p>
+                </div>
+ 
+                <ol class="steps">
+                    <li class="step">
+                        <span class="step-number" aria-hidden="true">01</span>
+                        <h3>Watch</h3>
+                        <p>
+                            Your camera feed is checked by a pose-recognition model that knows one gesture and
+                            can tell when it’s absent.
+                        </p>
+                    </li>
+                    <li class="step">
+                        <span class="step-number" aria-hidden="true">02</span>
+                        <h3>Scan</h3>
+                        <p>
+                            While there’s no gesture, the highlight moves to the next button. It steps through
+                            phrases, letters and controls at a pace you set.
+                        </p>
+                    </li>
+                    <li class="step">
+                        <span class="step-number" aria-hidden="true">03</span>
+                        <h3>Select</h3>
+                        <p>
+                            When the gesture is detected, Lumen selects whichever button is highlighted
+                            at that moment.
+                        </p>
+                    </li>
+                    <li class="step">
+                        <span class="step-number" aria-hidden="true">04</span>
+                        <h3>Speak</h3>
+                        <p>
+                            A chosen phrase, or a message built letter by letter, is spoken aloud using your
+                            device’s voice.
+                        </p>
+                    </li>
+                </ol>
+ 
+                <p class="small-note steps-footnote">
+                    Each step lasts 5 seconds by default. You can change it to anything from 1 to 10 seconds in Settings.
+                </p>
+            </div>
+        </section>
+ 
+        <!-- =====================================================
+             FEATURES
+        ===================================================== -->
+        <section class="section band-white" id="features" aria-labelledby="features-title">
+            <div class="container">
+ 
+                <div class="section-head">
+                    <h2 id="features-title">What’s in Lumen today</h2>
+                </div>
+ 
+                <ul class="feature-list">
+                    <li class="feature">
+                        <h3>One gesture runs the board</h3>
+                        <p>
+                            Once Lumen is running, every button on the board can be reached with the same gesture.
+                            No mouse or keyboard needed.
+                        </p>
+                    </li>
+                    <li class="feature">
+                        <h3>Everyday phrases, ready to use</h3>
+                        <p>
+                            Fifteen built-in phrases, including Yes, No, Help, Bathroom, Emergency and I love you.
+                        </p>
+                    </li>
+                    <li class="feature">
+                        <h3>Spell out anything</h3>
+                        <p>
+                            The Advanced board groups letters into sets of four to six. Pick a group, pick a letter,
+                            then Say the message.
+                        </p>
+                    </li>
+                    <li class="feature">
+                        <h3>Saved phrases</h3>
+                        <p>
+                            Save a message you’ve built and it becomes a button on the Saved board. Saved phrases are
+                            remembered on that browser or desktop app the next time you open it.
+                        </p>
+                    </li>
+                    <li class="feature">
+                        <h3>Your pace</h3>
+                        <p>
+                            Choose how long the highlight stays on each button, from 1 to 10 seconds.
+                        </p>
+                    </li>
+                    <li class="feature">
+                        <h3>Bring your own gesture</h3>
+                        <p>
+                            Train a pose model in Google’s Teachable Machine, paste its link into Lumen and load it.
+                            Lumen remembers the link.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+ 
+        <!-- =====================================================
+             TRY IN THE BROWSER
+        ===================================================== -->
+        <section class="section band-tint" id="try" aria-labelledby="try-title">
+            <div class="container split">
+ 
+                <div class="stack">
+                    <h2 id="try-title">Try Lumen in your browser</h2>
+                    <p class="lead">
+                        Nothing to install. Open the app, allow camera access when your browser asks, and the board
+                        appears once the gesture model has loaded.
+                    </p>
+                    <div class="button-row">
+                        <a class="btn btn-primary" href="https://philipe-pajishvili.github.io/Lumen-2.0/">Open Lumen</a>
+                    </div>
+                </div>
+ 
+                <div class="panel">
+                    <h3>Before you start</h3>
+                    <ul class="expect-list">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+                            <span><strong>A webcam.</strong> Lumen reads gestures from the camera, so the board won’t load without one.</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+                            <span><strong>An internet connection.</strong> The default gesture model is loaded from Teachable Machine when the app opens.</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+                            <span><strong>Your permission.</strong> The camera request appears only when you open the app, never on this page.</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+                            <span><strong>Camera images stay in your browser.</strong> Lumen analyzes them on your device and doesn’t send them anywhere.</span>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+                            <span>If you see “Camera Error”, check that your browser is allowed to use the camera, then reload.</span>
+                        </li>
+                    </ul>
+                </div>
+ 
+            </div>
+        </section>
+ 
+        <!-- =====================================================
+             DESKTOP APP
+        ===================================================== -->
+        <section class="section" id="download" aria-labelledby="download-title">
+            <div class="container split">
+ 
+                <div class="stack">
+                    <h2 id="download-title">Lumen for Windows</h2>
+                    <p class="lead">
+                        Install Lumen as a desktop app and run it in its own window, without opening a browser tab.
+                    </p>
+                </div>
+ 
+                <div class="panel">
+                    <h3>Lumen 2.0.0</h3>
+ 
+                    <dl class="facts">
+                        <div>
+                            <dt>Version</dt>
+                            <dd>2.0.0</dd>
+                        </div>
+                        <div>
+                            <dt>Installer</dt>
+                            <dd>Lumen Setup 2.0.0.exe</dd>
+                        </div>
+                        <div>
+                            <dt>Platform</dt>
+                            <dd>Windows</dd>
+                        </div>
+                    </dl>
+ 
+                    <!-- Shown once a download URL is set in site.js -->
+                    <div class="button-row" data-link-slot="windowsDownload" hidden>
+                        <a class="btn btn-primary" href="#download" data-link="windowsDownload">Download for Windows</a>
+                    </div>
+ 
+                    <!-- Shown until a download URL is set in site.js -->
+                    <p class="pending-note" data-pending="windowsDownload">
+                        The download link hasn’t been added to this page yet.
+                    </p>
+                </div>
+ 
+            </div>
+        </section>
+ 
+        <!-- =====================================================
+             MISSION
+        ===================================================== -->
+        <section class="section band-dark mission" id="mission" aria-labelledby="mission-title">
+            <div class="container">
+                <h2 id="mission-title">Technology should adapt to people, not force everyone to adapt to it.</h2>
+                <p class="lead">
+                    That’s the idea Lumen is built around: simple technology can have meaningful human impact.
+                </p>
+                <p class="motto">
+                    <img src="IMAGES/Star.png" alt="" width="128" height="110" loading="lazy">
+                    <span>Brightening Lives and Futures</span>
+                </p>
+            </div>
+        </section>
+ 
+        <!-- =====================================================
+             ABOUT
+        ===================================================== -->
+        <section class="section" id="about" aria-labelledby="about-title">
+            <div class="container split">
+ 
+                <div class="stack">
+                    <h2 id="about-title">About the project</h2>
+                    <p class="lead">
+                        Lumen is created and developed by Philipe Pajishvili.
+                    </p>
+                    <p>
+                        It’s still in development, and version 2.0.0 is the current release. Feedback from people who
+                        use it, and from people who build for those who do, shapes what comes next.
+                    </p>
+                    <p class="small-note">
+                        Lumen doesn’t diagnose or treat any condition, and it isn’t a substitute for professional support.
+                    </p>
+                    <p data-link-slot="github" hidden>
+                        <a href="#about" data-link="github">Lumen on GitHub</a>
+                    </p>
+                </div>
+ 
+                <details class="details">
+                    <summary>How Lumen is built</summary>
+                    <dl class="tech-list">
+                        <div>
+                            <dt>Gesture recognition</dt>
+                            <dd>A pose model trained with Google’s Teachable Machine, run in the browser with TensorFlow.js.</dd>
+                        </div>
+                        <div>
+                            <dt>Selection method</dt>
+                            <dd>Single-switch scanning: each button is highlighted in turn, and the gesture acts as the switch.</dd>
+                        </div>
+                        <div>
+                            <dt>Interface</dt>
+                            <dd>p5.js with plain HTML, CSS and JavaScript.</dd>
+                        </div>
+                        <div>
+                            <dt>Speech</dt>
+                            <dd>The browser’s built-in Web Speech API. Lumen picks an English voice when the device has one.</dd>
+                        </div>
+                        <div>
+                            <dt>Desktop app</dt>
+                            <dd>The same board, packaged with Electron for Windows.</dd>
+                        </div>
+                    </dl>
+                    <p class="small-note tech-credit">
+                        Teachable Machine and TensorFlow.js are Google projects. Lumen uses them and isn’t affiliated
+                        with or endorsed by Google.
+                    </p>
+                </details>
+ 
+            </div>
+        </section>
+ 
+        <!-- =====================================================
+             FEEDBACK
+        ===================================================== -->
+        <section class="section band-tint" id="feedback" aria-labelledby="feedback-title">
+            <div class="container split">
+ 
+                <div class="stack">
+                    <h2 id="feedback-title">Help shape Lumen.</h2>
+                    <p class="lead">
+                        Lumen is still developing. Your feedback shows what to fix and what to build next.
+                    </p>
+ 
+                    <div class="button-row" data-link-slot="feedback" hidden>
+                        <a class="btn btn-primary" href="#feedback" data-link="feedback">Send feedback</a>
+                    </div>
+                    <p class="pending-note" data-pending="feedback">
+                        The feedback link hasn’t been added to this page yet.
+                    </p>
+                </div>
+ 
+                <div>
+                    <p><strong>Useful feedback includes</strong></p>
+                    <ul class="feedback-list" style="margin-top: 0.75rem;">
+                        <li>Accessibility problems</li>
+                        <li>Bugs</li>
+                        <li>Confusing interactions</li>
+                        <li>Features that would help you</li>
+                        <li>Compatibility issues with cameras, devices or browsers</li>
+                    </ul>
+                </div>
+ 
+            </div>
+        </section>
+ 
+    </main>
+ 
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+ 
+                <div class="footer-brand">
+                    <img src="IMAGES/Lumenlogo.png" alt="Lumen" width="582" height="164" loading="lazy">
+                    <p>Assistive communication software. Brightening Lives and Futures.</p>
+                </div>
+ 
+                <nav aria-labelledby="footer-explore">
+                    <h2 id="footer-explore">Explore</h2>
+                    <ul class="footer-links">
+                        <li><a href="#how-it-works">How it works</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                    </ul>
+                </nav>
+ 
+                <nav aria-labelledby="footer-use">
+                    <h2 id="footer-use">Use Lumen</h2>
+                    <ul class="footer-links">
+                        <li><a href="https://philipe-pajishvili.github.io/Lumen-2.0/">Open in your browser</a></li>
+                        <li><a href="#download">Lumen for Windows</a></li>
+                        <li data-link-slot="github" hidden><a href="#about" data-link="github">GitHub</a></li>
+                    </ul>
+                </nav>
+ 
+            </div>
+ 
+            <p class="footer-legal">Lumen was created by Philipe Pajishvili. © 2026</p>
+        </div>
+    </footer>
+ 
+</body>
+</html>
+ 

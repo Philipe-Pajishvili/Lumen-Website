@@ -1,0 +1,947 @@
+/* =====================================================
+   LUMEN WEBSITE
+   Landing page styles. The browser app (app.html) keeps
+   using style.css and is not affected by anything here.
+===================================================== */
+
+/* Fonts (Fraunces + Inter, the same pair the app uses) are loaded from index.html. */
+
+/* -----------------------------------------------------
+   Tokens
+----------------------------------------------------- */
+
+:root {
+    color-scheme: light;
+
+    /* Colour: taken from the Lumen logo and the app */
+    --paper: #f7f7fc;
+    --surface: #ffffff;
+    --tint: #eceefb;
+    --line: #d5d8ea;
+    --ink: #171a3f;
+    --ink-soft: #464b6b;
+    --brand: #5658aa;        /* text-safe brand indigo (6.2:1 on white) */
+    --navy: #262a70;         /* buttons, dark band (12.8:1 on white) */
+    --navy-deep: #1a1d55;
+    --highlight: #a7afe8;    /* the app's active-button colour */
+    --sky: #8fb0e6;          /* top of the logo gradient */
+
+    /* Type */
+    --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "Inter", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+
+    --text-base: 1.0625rem;
+    --text-small: 0.9375rem;
+    --text-h3: 1.25rem;
+    --text-h2: clamp(1.9rem, 1.35rem + 2vw, 2.9rem);
+    --text-h1: clamp(2.3rem, 1.4rem + 3.8vw, 4.1rem);
+
+    /* Shape and space */
+    --radius-s: 12px;
+    --radius-m: 18px;
+    --container: 72rem;
+    --gutter: 1.25rem;
+    --section-space: clamp(4rem, 3rem + 5vw, 7.5rem);
+    --header-height: 4.25rem;
+}
+
+/* -----------------------------------------------------
+   Base
+----------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+    -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: inherit;
+}
+
+h1 {
+    font-size: var(--text-h1);
+    line-height: 1.06;
+}
+
+h2 {
+    font-size: var(--text-h2);
+    line-height: 1.12;
+}
+
+h3 {
+    font-size: var(--text-h3);
+    line-height: 1.25;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: var(--brand);
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: var(--navy);
+}
+
+:focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.band-dark :focus-visible {
+    outline-color: #ffffff;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    background: var(--navy);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: var(--radius-s);
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 1rem;
+    color: #ffffff;
+}
+
+/* -----------------------------------------------------
+   Layout helpers
+----------------------------------------------------- */
+
+.container {
+    width: min(var(--container), 100% - (var(--gutter) * 2));
+    margin-inline: auto;
+}
+
+.section {
+    padding-block: var(--section-space);
+}
+
+.band-tint {
+    background: var(--tint);
+}
+
+.band-white {
+    background: var(--surface);
+}
+
+.band-dark {
+    background: var(--navy);
+    color: #ffffff;
+}
+
+.measure {
+    max-width: 38rem;
+}
+
+.lead {
+    font-size: 1.1875rem;
+    color: var(--ink-soft);
+}
+
+.band-dark .lead {
+    color: #dfe1f7;
+}
+
+.stack > * + * {
+    margin-top: 1.25rem;
+}
+
+.split {
+    display: grid;
+    gap: 2.5rem;
+}
+
+@media (min-width: 60rem) {
+    .split {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 5rem;
+        align-items: start;
+    }
+}
+
+.small-note {
+    font-size: var(--text-small);
+    color: var(--ink-soft);
+}
+
+/* -----------------------------------------------------
+   Buttons
+----------------------------------------------------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.7rem 1.6rem;
+
+    border: 2px solid var(--navy);
+    border-radius: 999px;
+
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+    background: var(--navy);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: var(--navy-deep);
+    border-color: var(--navy-deep);
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--navy);
+}
+
+.btn-secondary:hover {
+    background: var(--tint);
+    color: var(--navy);
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+}
+
+@media (max-width: 30rem) {
+    .button-row .btn {
+        width: 100%;
+    }
+}
+
+/* Links that are not set up yet stay out of the way. */
+[hidden] {
+    display: none !important;
+}
+
+/* -----------------------------------------------------
+   Header and navigation
+----------------------------------------------------- */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    min-height: var(--header-height);
+}
+
+.brand-link {
+    display: inline-flex;
+    align-items: center;
+    padding-block: 0.5rem;
+}
+
+.brand-link img {
+    display: block;
+    height: 2.25rem;
+    width: auto;
+}
+
+.site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-nav a {
+    display: inline-block;
+    padding: 0.5rem 0.125rem;
+
+    color: var(--ink);
+    font-size: var(--text-small);
+    font-weight: 500;
+    text-decoration: none;
+
+    border-bottom: 3px solid transparent;
+}
+
+.site-nav a:hover {
+    color: var(--brand);
+    border-bottom-color: var(--line);
+}
+
+/* Current section: underline plus heavier weight, not colour alone */
+.site-nav a[aria-current] {
+    font-weight: 700;
+    border-bottom-color: var(--navy);
+}
+
+.nav-toggle {
+    display: none;
+    min-height: 2.75rem;
+    padding: 0.5rem 1.1rem;
+
+    background: transparent;
+    color: var(--navy);
+    border: 2px solid var(--navy);
+    border-radius: 999px;
+
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@media (max-width: 55rem) {
+
+    .js .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .js .site-nav {
+        display: none;
+        flex-basis: 100%;
+        padding-bottom: 0.75rem;
+    }
+
+    .js .site-nav.is-open {
+        display: block;
+    }
+
+    .js .site-nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .js .site-nav a {
+        display: block;
+        padding: 0.85rem 0.25rem;
+        border-bottom: 1px solid var(--line);
+        font-size: 1.0625rem;
+    }
+
+    .js .site-nav a[aria-current] {
+        border-bottom-color: var(--navy);
+    }
+}
+
+/* -----------------------------------------------------
+   Hero
+----------------------------------------------------- */
+
+.hero {
+    padding-block: clamp(2.5rem, 1.5rem + 5vw, 5.5rem) var(--section-space);
+}
+
+.hero-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (min-width: 60rem) {
+    .hero-grid {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        gap: 4.5rem;
+    }
+}
+
+.hero-copy h1 {
+    max-width: 17ch;
+}
+
+.hero-copy .lead {
+    max-width: 34rem;
+    margin-top: 1.5rem;
+}
+
+.hero-copy .button-row {
+    margin-top: 2rem;
+}
+
+.hero-copy .small-note {
+    margin-top: 1.25rem;
+}
+
+/* -----------------------------------------------------
+   Board illustration (hero)
+   A simplified drawing of the real Lumen board, using
+   the app's own words, order and colours.
+----------------------------------------------------- */
+
+.demo {
+    width: 100%;
+    max-width: 26rem;
+    margin-inline: auto;
+}
+
+@media (min-width: 60rem) {
+    .demo {
+        margin-inline: 0 0;
+        justify-self: end;
+    }
+}
+
+.demo-frame {
+    padding: 1.1rem;
+    background: var(--tint);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+}
+
+.demo-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.9rem;
+    margin-bottom: 0.75rem;
+
+    background: #0d0f26;
+    color: #ffffff;
+    border-radius: var(--radius-s);
+
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.6rem;
+}
+
+.demo-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.4rem;
+    padding: 0.5rem 0.25rem;
+
+    background: var(--surface);
+    color: var(--ink);
+    border: 2px solid var(--line);
+    border-radius: var(--radius-s);
+
+    font-size: clamp(0.8rem, 0.55rem + 1.2vw, 0.95rem);
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+/* The highlight that steps across the board */
+.demo-cell.is-scanned {
+    background: var(--highlight);
+    border-color: var(--navy);
+}
+
+/* The button chosen by the gesture */
+.demo-cell.is-selected {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #ffffff;
+}
+
+.demo-spoken {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 2.5rem;
+    margin-top: 0.75rem;
+    padding-inline: 0.25rem;
+
+    color: var(--ink);
+    font-size: var(--text-small);
+    font-weight: 600;
+}
+
+.demo-spoken svg {
+    flex: none;
+    color: var(--navy);
+}
+
+.demo-spoken[data-visible="false"] {
+    visibility: hidden;
+}
+
+.demo-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-top: 0.875rem;
+}
+
+.demo-toggle {
+    min-height: 2.75rem;
+    padding: 0.4rem 1.1rem;
+
+    background: transparent;
+    color: var(--navy);
+    border: 2px solid var(--navy);
+    border-radius: 999px;
+
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.demo-toggle:hover {
+    background: var(--tint);
+}
+
+.demo .small-note {
+    max-width: 22rem;
+}
+
+/* -----------------------------------------------------
+   Problem
+----------------------------------------------------- */
+
+.problem-copy {
+    display: grid;
+    gap: 1.25rem;
+    font-size: 1.125rem;
+}
+
+.problem-copy p {
+    max-width: 36rem;
+}
+
+/* -----------------------------------------------------
+   How it works
+----------------------------------------------------- */
+
+.section-head {
+    max-width: 44rem;
+    margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.section-head .lead {
+    margin-top: 1rem;
+}
+
+.steps {
+    display: grid;
+    gap: 2.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (min-width: 40rem) {
+    .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2.5rem 2rem;
+    }
+}
+
+@media (min-width: 64rem) {
+    .steps {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+    }
+}
+
+.step {
+    padding-top: 1.25rem;
+    border-top: 3px solid var(--navy);
+}
+
+.step-number {
+    display: block;
+    margin-bottom: 0.5rem;
+
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--brand);
+}
+
+.step h3 {
+    margin-bottom: 0.6rem;
+}
+
+.step p {
+    color: var(--ink-soft);
+}
+
+.steps-footnote {
+    margin-top: 2.5rem;
+}
+
+/* -----------------------------------------------------
+   Features
+----------------------------------------------------- */
+
+.feature-list {
+    display: grid;
+    gap: 2.25rem 3rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (min-width: 42rem) {
+    .feature-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 64rem) {
+    .feature-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.feature {
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--ink);
+}
+
+.feature h3 {
+    margin-bottom: 0.5rem;
+}
+
+.feature p {
+    color: var(--ink-soft);
+}
+
+/* -----------------------------------------------------
+   Try / Download
+----------------------------------------------------- */
+
+.expect-list {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.expect-list li {
+    display: grid;
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+    gap: 0.75rem;
+}
+
+.expect-list svg {
+    margin-top: 0.3rem;
+    color: var(--navy);
+}
+
+.panel {
+    padding: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+}
+
+.panel h3 {
+    margin-bottom: 1.25rem;
+}
+
+.facts {
+    display: grid;
+    gap: 0;
+    margin: 0;
+}
+
+.facts div {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 0.85rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.facts div:first-child {
+    border-top: 1px solid var(--line);
+}
+
+.facts dt {
+    color: var(--ink-soft);
+    font-size: var(--text-small);
+}
+
+.facts dd {
+    margin: 0;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.panel .button-row,
+.panel .pending-note {
+    margin-top: 1.5rem;
+}
+
+.pending-note {
+    padding: 0.85rem 1rem;
+    background: var(--tint);
+    border-left: 4px solid var(--navy);
+    border-radius: 0 var(--radius-s) var(--radius-s) 0;
+    font-size: var(--text-small);
+}
+
+/* -----------------------------------------------------
+   Mission
+----------------------------------------------------- */
+
+.mission {
+    text-align: left;
+}
+
+.mission h2 {
+    max-width: 22ch;
+    font-size: clamp(2.1rem, 1.4rem + 3.2vw, 3.9rem);
+    line-height: 1.08;
+}
+
+.mission .lead {
+    margin-top: 1.5rem;
+    max-width: 34rem;
+}
+
+.motto {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.motto img {
+    width: 2rem;
+    height: auto;
+    filter: brightness(1.9) saturate(0.7);   /* the star is decorative; lift it off the navy */
+}
+
+/* -----------------------------------------------------
+   About
+----------------------------------------------------- */
+
+.details {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-m);
+}
+
+.details summary {
+    padding: 1.1rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--radius-m);
+}
+
+.details[open] summary {
+    border-bottom: 1px solid var(--line);
+    border-radius: var(--radius-m) var(--radius-m) 0 0;
+}
+
+.tech-list {
+    display: grid;
+    gap: 1.1rem;
+    margin: 0;
+    padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.tech-list dt {
+    font-weight: 600;
+}
+
+.tech-list dd {
+    margin: 0.15rem 0 0;
+    color: var(--ink-soft);
+    font-size: var(--text-small);
+}
+
+.tech-credit {
+    padding: 0 1.5rem 1.5rem;
+}
+
+/* -----------------------------------------------------
+   Feedback
+----------------------------------------------------- */
+
+.feedback-list {
+    display: grid;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.feedback-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--line);
+    font-weight: 500;
+}
+
+.feedback-list li:first-child {
+    border-top: 1px solid var(--line);
+}
+
+/* -----------------------------------------------------
+   Footer
+----------------------------------------------------- */
+
+.site-footer {
+    padding-block: 3.5rem 2.5rem;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    font-size: var(--text-small);
+}
+
+.footer-grid {
+    display: grid;
+    gap: 2.5rem;
+}
+
+@media (min-width: 48rem) {
+    .footer-grid {
+        grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 1fr));
+    }
+}
+
+.footer-brand img {
+    display: block;
+    height: 2.25rem;
+    width: auto;
+    margin-bottom: 1rem;
+}
+
+.footer-brand p {
+    max-width: 22rem;
+    color: var(--ink-soft);
+}
+
+.site-footer h2 {
+    margin-bottom: 0.75rem;
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.footer-links {
+    display: grid;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-links a {
+    display: inline-block;
+    padding-block: 0.3rem;
+    color: var(--ink);
+}
+
+.footer-links a:hover {
+    color: var(--brand);
+}
+
+.footer-legal {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+}
+
+/* -----------------------------------------------------
+   Reduced motion
+   The board illustration stays still (see site.js) and
+   colour changes happen instantly.
+----------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
