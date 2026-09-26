@@ -13,7 +13,7 @@
 
 const LUMEN_LINKS = {
     // Public link to "Lumen Setup 2.0.0.exe" (for example a GitHub Releases asset).
-    windowsDownload: "https://github.com/Philipe-Pajishvili/Lumen-2.0/releases/download/v2.0.0/Lumen.exe",
+    windowsDownload: "https://github.com/Philipe-Pajishvili/Lumen-2.0/releases/download/v2.0.0/Lumen.Setup.2.0.0.exe",
 
     // Public GitHub repository for Lumen.
     github: "https://github.com/Philipe-Pajishvili/Lumen-2.0",
